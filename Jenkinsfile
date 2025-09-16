@@ -2,8 +2,9 @@ pipeline {
     agent any
 
     stages {
-        stage('Pull Code') {
+        stage('Clean Workspace & Pull Code') {
             steps {
+                cleanWs()
                 git 'https://github.com/pratham2779/cicd-demo.git'
             }
         }
@@ -11,7 +12,6 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    // Build fresh image ignoring cache
                     docker.build("cicd-demo:latest", "--no-cache .")
                 }
             }
