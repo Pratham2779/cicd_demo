@@ -11,7 +11,6 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    // Force Docker to ignore cache
                     docker.build("cicd-demo:latest", "--no-cache .")
                 }
             }

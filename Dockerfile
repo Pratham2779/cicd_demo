@@ -4,7 +4,7 @@ FROM node:20-alpine
 # Set working directory
 WORKDIR /app
 
-# Copy project files
+# Copy all project files
 COPY . .
 
 # Expose port 3000
