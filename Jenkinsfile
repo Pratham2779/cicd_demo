@@ -11,12 +11,13 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
+                    // Build fresh image ignoring cache
                     docker.build("cicd-demo:latest", "--no-cache .")
                 }
             }
         }
 
-        stage('Stop Old Container') {
+        stage('Stop & Remove Old Container') {
             steps {
                 sh '''
                 if [ $(docker ps -q -f name=cicd-demo-container) ]; then
@@ -33,7 +34,7 @@ pipeline {
             }
         }
 
-        stage('Cleanup Old Images') {
+        stage('Cleanup Dangling Images') {
             steps {
                 sh 'docker image prune -f'
             }
