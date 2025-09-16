@@ -20,7 +20,8 @@ pipeline {
         stage('Stop & Remove Old Container') {
             steps {
                 sh '''
-                if [ $(docker ps -q -f name=cicd-demo-container) ]; then
+                CONTAINER=$(docker ps -q -f name=cicd-demo-container)
+                if [ "$CONTAINER" ]; then
                     docker stop cicd-demo-container
                     docker rm cicd-demo-container
                 fi
