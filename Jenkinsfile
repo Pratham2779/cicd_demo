@@ -11,7 +11,8 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    docker.build("cicd-demo:latest")
+                    // Force Docker to ignore cache
+                    docker.build("cicd-demo:latest", "--no-cache .")
                 }
             }
         }
@@ -32,6 +33,12 @@ pipeline {
                 sh 'docker run -d --name cicd-demo-container -p 8081:3000 cicd-demo:latest'
             }
         }
+
+        stage('Cleanup Old Images') {
+            steps {
+                sh 'docker image prune -f'
+            }
+        }
     }
 
     post {
@@ -40,4 +47,3 @@ pipeline {
         }
     }
 }
- 
