@@ -184,3 +184,10 @@ To https://github.com/Pratham2779/cicd_demo.git
 Setting up watches.  Beware: since -r was given, this may take a while!
 Watches established.
 ./ MODIFY nohup.out
+[main a03df69] Auto-commit on changes detected
+ 1 file changed, 7 insertions(+)
+To https://github.com/Pratham2779/cicd_demo.git
+   7498f5e..a03df69  main -> main
+Setting up watches.  Beware: since -r was given, this may take a while!
+Watches established.
+./ MODIFY nohup.out
